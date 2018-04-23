@@ -1,5 +1,3 @@
-import { colors } from 'material-ui/styles';
-
 const style = {
     logreg: {
         maxWidth:'600px',
