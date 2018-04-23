@@ -2,18 +2,19 @@
 'use strict'
 
 //first we import our dependencies...
-var express = require('express');
-var bodyParser = require('body-parser');
+const express = require('express');
+const bodyParser = require('body-parser');
 
+const db = require('./config');
 const createDB = require('./routes/createDB');
 const createTable = require('./routes/createTable');
 
 //and create our instances
-var app = express();
-var router = express.Router();
+const app = express();
+const router = express.Router();
 
 //set our port to either a predetermined port number if you have set it up, or 3001
-var port = process.env.API_PORT || 3001;
+const port = process.env.API_PORT || 3001;
 
 //now we should configure the API to use bodyParser and look for JSON data in the request body
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -37,7 +38,16 @@ app.use('/createDB', createDB);
 /* Use it to create a table accepts param called `tablename` */
 app.use('/createtable', createTable);
 
+app.post('/auth', (req,res)=>{
+  const sql = `SELECT * from users WHERE email = '${req.body.email}' AND password = '${req.body.password}';`;
+  console.log(sql);
+  db.query(sql, (err, result) => {
+    if(err) throw err;
+      res.send(result);
+  });
+});
 
+// SELECT postings.jobTitle FROM postings, organization WHERE postings.postedBy = organization.id AND organization.zipcode = 95051
 // //now  we can set the route path & initialize the API
 // router.get('/', function(req, res) {
 //   res.json({ message: 'API Initialized!'});

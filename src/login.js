@@ -1,14 +1,22 @@
 import React from 'react';
 import { Paper, TextField, RaisedButton} from 'material-ui';
+import axios from 'axios';
 import style from './assets/style';
   
 
 class Login extends React.Component {
     state = { email:"", password: ""};
-    authorize() {
-      console.log("authorizing");
+    authorize = () => {
+      axios.post('http://localhost:3001/auth',{
+        email: this.state.email,
+        password: this.state.password
+      }).then((res) => {
+        console.log("login success");
+      }).catch(function (error) {
+        console.log(error);
+      });
     }
-    render() {
+    render = () => {
       return (
         <Paper style={style.logreg}>
                 <TextField floatingLabelText="email" type="email" 
