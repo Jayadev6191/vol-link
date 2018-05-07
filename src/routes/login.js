@@ -25,12 +25,12 @@ class Login extends React.Component {
                 <TextField floatingLabelText="password" type="password" 
                            value={this.state.password}
                            onChange={(evt)=>{ this.setState({password:evt.target.value}) }} /><br/>
-                <RaisedButton label="Login" className="login-btn"
+                <RaisedButton label="Login" className="auth-btn"
                               onClick={this.authorize}
                               labelColor={colors.fullWhite}
                               backgroundColor={colors.teal500} />
-                <div className="login-footer">
-                      New here?&nbsp;<a href="/register">Sign up</a>
+                <div className="auth-footer">
+                      New here?&nbsp;<a href="/register">Register Now</a>
                 </div>
         </Paper>
       )

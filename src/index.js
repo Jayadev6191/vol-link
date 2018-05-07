@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Routes from './routes';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { AppBar } from 'material-ui';
 import { colors } from 'material-ui/styles';
-import Login from './login'
 require('./assets/css/index.css');
 
 class App extends React.Component {
@@ -18,9 +18,7 @@ class App extends React.Component {
                         }}
                         iconElementLeft={(<div />)}
                     />
-                    <div className="main-container">
-                        <Login/>
-                    </div>
+                    <Routes/>
                 </div>
             </MuiThemeProvider>
         )
