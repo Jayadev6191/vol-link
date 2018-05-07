@@ -3,19 +3,25 @@
   max-width: 660px;
   padding: 20px;
   margin-top: 80px; }
-  .login-btn {
-    margin-top: 20px; }
-  .login-footer {
-    margin-top: 20px;
-    font-size: 10px; }
-    .login-footer a {
-      text-decoration: none;
-      color: #009688; }
 
 .registration {
-  background-color: yellow; }
+  background-color: yellow;
+  padding: 20px; }
+
+body {
+  background-color: #F5F5F5; }
 
 .main-container {
   margin: 0 auto;
+  padding: 20px;
+  max-width: 680px; }
+
+.auth-btn {
+  margin-top: 20px; }
+
+.auth-footer {
   margin-top: 20px;
-  max-width: 1280px; }
+  font-size: 12px; }
+  .auth-footer a {
+    text-decoration: none;
+    color: #009688; }

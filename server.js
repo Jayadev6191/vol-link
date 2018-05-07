@@ -6,8 +6,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 
 const db = require('./config');
-const createDB = require('./routes/createDB');
-const createTable = require('./routes/createTable');
+const createDB = require('./utils/createDB');
+const createTable = require('./utils/createTable');
 
 //and create our instances
 const app = express();
@@ -40,10 +40,24 @@ app.use('/createtable', createTable);
 
 app.post('/auth', (req,res)=>{
   const sql = `SELECT * from users WHERE email = '${req.body.email}' AND password = '${req.body.password}';`;
-  console.log(sql);
   db.query(sql, (err, result) => {
     if(err) throw err;
       res.send(result);
+  });
+});
+
+app.post('/register', (req,res)=>{
+  const sql = `SELECT * from users WHERE email = '${req.body.email}';`;
+  console.log(sql);
+  db.query(sql, (err, result) => {
+    if(err) throw err;
+    console.log(result);
+    if(result.length !== 0) {
+      console.log("User already exists");
+    } else {
+      console.log("proceed with registration");
+      res.send("proceed with registration");
+    }
   });
 });
 
