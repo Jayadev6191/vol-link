@@ -1,0 +1,13 @@
+.login {
+  margin: 0 auto;
+  max-width: 660px;
+  padding: 20px;
+  margin-top: 80px; }
+  .login-btn {
+    margin-top: 20px; }
+  .login-footer {
+    margin-top: 20px;
+    font-size: 10px; }
+    .login-footer a {
+      text-decoration: none;
+      color: #009688; }

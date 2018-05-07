@@ -4,6 +4,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { AppBar } from 'material-ui';
 import { colors } from 'material-ui/styles';
 import Login from './login'
+require('./assets/css/index.css');
 
 class App extends React.Component {
     render() {
@@ -15,8 +16,11 @@ class App extends React.Component {
                         style={{
                             backgroundColor:colors.teal500
                         }}
+                        iconElementLeft={(<div />)}
                     />
-                    <Login/>
+                    <div className="main-container">
+                        <Login/>
+                    </div>
                 </div>
             </MuiThemeProvider>
         )

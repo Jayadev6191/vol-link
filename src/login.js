@@ -1,8 +1,8 @@
 import React from 'react';
+import { connect } from "react-redux";
 import { Paper, TextField, RaisedButton} from 'material-ui';
+import { colors } from 'material-ui/styles';
 import axios from 'axios';
-import style from './assets/style';
-  
 
 class Login extends React.Component {
     state = { email:"", password: ""};
@@ -11,21 +11,27 @@ class Login extends React.Component {
         email: this.state.email,
         password: this.state.password
       }).then((res) => {
-        console.log("login success");
+        
       }).catch(function (error) {
         console.log(error);
       });
     }
     render = () => {
       return (
-        <Paper style={style.logreg}>
+        <Paper className="login">
                 <TextField floatingLabelText="email" type="email" 
                            value={this.state.email} 
                            onChange={(evt)=>{ this.setState({email:evt.target.value}) }}/><br/>
                 <TextField floatingLabelText="password" type="password" 
                            value={this.state.password}
                            onChange={(evt)=>{ this.setState({password:evt.target.value}) }} /><br/>
-                <RaisedButton label="Login" style={style.login.btn} onClick={this.authorize} />
+                <RaisedButton label="Login" className="login-btn"
+                              onClick={this.authorize}
+                              labelColor={colors.fullWhite}
+                              backgroundColor={colors.teal500} />
+                <div className="login-footer">
+                      New here?&nbsp;<a href="/register">Sign up</a>
+                </div>
         </Paper>
       )
     }
