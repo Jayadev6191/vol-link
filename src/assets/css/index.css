@@ -5,8 +5,11 @@
   margin-top: 80px; }
 
 .registration {
+  margin: 0 auto;
+  max-width: 660px;
   background-color: yellow;
-  padding: 20px; }
+  padding: 20px;
+  margin-top: 20px; }
 
 body {
   background-color: #F5F5F5; }

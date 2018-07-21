@@ -1,9 +1,9 @@
-var express = require('express');
+var express = require("express");
 var router = express.Router();
-var db = require('../config');
+var db = require("../config");
 
 // Create DB
-router.get('/', (req, res) => {
+router.get("/", (req, res) => {
     const dbname = req.query.dbname;
     console.log(`dbname is ${dbname}`);
 

@@ -1,22 +1,39 @@
-import React from 'react';
-import { Paper, TextField, RaisedButton} from 'material-ui';
-import { colors } from 'material-ui/styles';
-import axios from 'axios';
+import React from "react";
+import { Paper, TextField, RaisedButton, Snackbar} from "material-ui";
+import { colors } from "material-ui/styles";
+import axios from "axios";
 
 class Registration extends React.Component {
-    state = { firstName:"",lastName:"",email:"",password: "",designation:"",address:"",stateName:"",city:"",country:"",zipCode:""};
+    state = { 
+      firstName:"Jayadev",
+      lastName:"Akkiraju",
+      email:"jaidev.akkiraju@gmail.com",
+      password: "12345",
+      designation:"engineer",
+      address:"215 terry street",
+      stateName:"CA",
+      city:"san jose",
+      country:"USA",
+      zipCode:"95136",
+      snackbarOpen: false,
+      errMsg: ""
+    };
+
     authorize = () => {
       const {firstName,lastName,email,password,designation,address,stateName,city,country,zipCode} = this.state;
-      axios.post('http://localhost:3001/register',{
+      axios.post("http://localhost:3001/register",{
         firstName,
         lastName,email,
         password,designation,
         address,stateName,
         city,country,zipCode
       }).then((res) => {
-        console.log(res);
-      }).catch(function (error) {
-        console.log(error.message);
+        console.log(res.data);
+      }).catch((error) => {
+        this.setState({
+          errMsg: error.response.data,
+          snackbarOpen: true
+        })
       });
     }
     render = () => {
@@ -59,6 +76,13 @@ class Registration extends React.Component {
                 <div className="auth-footer">
                       Already have an account?&nbsp;<a href="/">Login</a>
                 </div>
+
+                <Snackbar
+                  open={this.state.snackbarOpen}
+                  message={this.state.errMsg}
+                  autoHideDuration={4000}
+                  onRequestClose={this.handleRequestClose}
+                />
         </Paper>
       )
     }
