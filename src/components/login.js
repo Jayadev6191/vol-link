@@ -2,7 +2,7 @@ import React from "react";
 // import { connect } from "react-redux";
 import { Paper, TextField, RaisedButton} from "material-ui";
 import { colors } from "material-ui/styles";
-import { loginAction } from "./actions/loginAction";
+import { loginAction } from "../actions/loginAction";
 
 const mapStateToProps = state => ({
   ...state
