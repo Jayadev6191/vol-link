@@ -17,8 +17,8 @@ const registrationRoute = require("./api/routes/registration");
 const app = express();
 const router = express.Router();
 
-//set our port to either a predetermined port number if you have set it up, or 3001
-const port = process.env.API_PORT || 3001;
+//set our port to either a predetermined port number if you have set it up, or 3000
+const port = process.env.API_PORT || 3000;
 
 //now we should configure the API to use bodyParser and look for JSON data in the request body
 app.use(bodyParser.urlencoded({ extended: true }));
